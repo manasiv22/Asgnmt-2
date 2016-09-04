@@ -1,3 +1,6 @@
+NAME : MANASI MOHAN VEERAMACHANENI	STU ID:88851
+
+
 Create a new git repository somewhere in your filesystem, and 
 configure a remote (called whatever you want, 
 A)Made new directory Hw2
