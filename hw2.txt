@@ -1,0 +1,94 @@
+Create a new git repository somewhere in your filesystem, and 
+configure a remote (called whatever you want, 
+A)Made new directory Hw2
+cd Hw2
+$git init
+$git commit -m "initial commit"
+$git remote add origin https://github.com/manasiv22/Asgnmt-2.git
+Made a commit on master and pushed to origin to track origin/master
+$ git push --set-upstream origin master(since its not default)
+
+
+What command did you use to configure the remote?
+Instead of creating a new git repository and configuring it with this remote, I could have asked you to git clone the repo from afs.
+If you had done so, what would the output of git remote -v be?
+A)$ git remote -v
+origin  https://github.com/manasiv22/Asgnmt-2.git (fetch)
+origin  https://github.com/manasiv22/Asgnmt-2.git (push)
+
+
+Run git fetch remotename (substituting your remote name for remotename).
+Did anything appear in your working directory? Why?
+A)$ git fetch origin
+$ git fetch origin
+remote: Counting objects: 3, done.
+remote: Compressing objects: 100% (2/2), done.
+remote: Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+Unpacking objects: 100% (3/3), done.
+From https://github.com/manasiv22/Asgnmt-2
+ * [new branch]      new-branch -> origin/new-branch
+
+
+Update your local master branch with the remote one, and give the command you used to do so.
+A)$ git pull origin
+Already up-to-date.
+
+
+Your working directory should have been updated. You should check that. That means the master branch was updated on the remote.
+ But it's possible that when we ran git fetch, we fetched other branches as well! How could we (i.e. what command could we use) find all the branches we may have gotten from the remote?
+A)To check existing remote branches : $ git branch -r
+  origin/master
+  origin/new-branch
+To check loca branches : $git branch
+$ git branch
+* master
+
+ Spoiler: there's another branch. Check it out, find the file on that branch, and give the first five letters of that file as well as the command you used to checkout the branch.
+ NOTE: It's very bad practice to directly git checkout the remote-tracking branch. Instead, try to checkout the branch so that it creates a local branch based on the remote-tracking branch. 
+ If you're not sure how (it's pretty easy to guess, though), you can look it up. 
+A)$ git checkout new-branch
+$ git reflog -ls origin/new-branch
+$ git show c7b7669
+commit c7b7669a4ecc9a262c5345514e6fba3f9970310c
+Author: manasiv22 <manasiv22@gmail.com>
+Date:   Sun Sep 4 01:20:33 2016 -0700
+
+    committing on remote branch
+
+    committing on remote branch
+
+diff --git a/n.txt b/n.txt
+new file mode 100644
+index 0000000..dd097a8
+--- /dev/null
++++ b/n.txt
+@@ -0,0 +1 @@
++adding a remote branch
+$ git checkout master
+
+
+The first five letters of filename are n (filename is n.txt)
+
+What is a bare repository? What makes it different from normal repositories? 
+In what situations is it used?
+A)Repositories created with git init --bare are called bare repos. 
+-They are structured a bit differently from working directories. 
+-They contain no working or checked out copy of your source files. 
+-And bare repos store git revision history of your repo in the root folder of your repository instead of in a .git subfolder. 
+-Bare repositories are customarily given a .git extension.
+-They are public in permissions so anyone can push the updates to such repositories.
+
+
+In lecture, I was careful to explain the two-step procedure of using git fetch and git merge remotename/branchname to get commits from a remote.
+When would this be a good idea as opposed to simply doing git pull remotename branchname? Briefly discuss remote-tracking branches and their relevance in your answer.
+A)The problem with git pull is that it has all kinds of helpful magic that means you don’t really have to learn about the different types of branch in git.
+-The other problem is that by both fetching and merging in one command, your working directory is updated without giving you a chance to examine the changes you’ve just brought into your repository. 
+For these cases git fetch and merge are preferred.
+For my example have used git pull since I was aware of the changes in the remote repo.
+
+
+I didn't ask you to do this, but suppose I asked you to make a commit on the 'other' branch.
+ If I wanted you to push this branch, what command would you use?
+Submit this homework by typing your answers to these questions in a file called hw2.txt. 
+You should commit this on the master branch of your repository. Most importantly, make sure to push the master branch!
+A)$ git push origin
